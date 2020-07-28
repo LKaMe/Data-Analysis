@@ -21,7 +21,8 @@ headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36"
 }
 
-proxy_list= ['58.218.92.149:9434','58.218.200.223:2363','183.165.192.196:4245']
+proxy_list= ['58.218.201.74:3397','58.218.200.214:3711','114.96.60.119:4216','58.218.201.122:6741',
+'58.218.200.237:2936','182.87.190.102:4217']
 proxy = random.choice(proxy_list)
 print("当前IP为:",proxy)
 proxies = {
@@ -93,19 +94,17 @@ def getCityUrl():
         soup1 = BeautifulSoup(response1,'html.parser')
         result = soup1.find('div',class_='kuang')
         time.sleep(1)
-        level = result.find_all('tr')
         # if isinstance(level,bs4.element.Tag):
-        for level1 in level[3:]:
-            level2 = level1.find_all('td')
-            try:
+        try:
+            level = result.find_all('tr')
+            for level1 in level[3:]:
+                level2 = level1.find_all('td')
                 city2 = level2[0].a.string
                 code2 = level2[1].a.string
-                # print(city2,code2)
-                # write_csv(out_dirs,["市","行政区划"],'a+')
                 # write_csv(out_dirs1,[city2,code2],'a+')
                 urllist2.append(code2)
-            except:
-                write_csv(out_dirs1,["市错误:",city2,code2],'a+')
+        except:
+            write_csv(out_dirs1,["市错误:",city2,code2],'a+')
     # print("市:",urllist2)
     return urllist2
 '''

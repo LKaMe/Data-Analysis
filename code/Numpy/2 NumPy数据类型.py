@@ -28,6 +28,15 @@ import numpy as np
 
 #实例6 
 #类型字段名可以用于存取实际的age列
-dt = np.dtype([('age',np.int8)])
-a = np.array([(10,),(20,),(30)],dtype = dt)
-print(a['age'])
+# dt = np.dtype([('age',np.int8)])
+# a = np.array([(10,),(20,),(30)],dtype = dt)
+# print(a['age'])
+
+#实例7
+# student = np.dtype([('name','S20'),('age','i1'),('marks','f4')])
+# print(student)
+
+#实例8
+student = np.dtype([('name','S20'),('age','i1'),('marks','f4')])
+a = np.array([('abc',21,50),('xyz',18,75)],dtype = student)
+print(a)
